@@ -6,11 +6,13 @@ export default function HomePage({navigation}) {
     const statusContext = React.useContext(StatusContext);
     return (
         <View style={styles.container}>
-            <Text>Home Page</Text>
-            <Button title="Login" onPress={() => navigation.navigate("LoginPage")} />
-            { statusContext.currentUser != null &&
-                <Button title="Map" onPress={() => navigation.navigate("Map")} />
-            }
+            <Text style={styles.text}>Welcome to your personalized map!</Text>
+            <View style={styles.buttonContainer}>
+                <Button title="Login Page" onPress={() => navigation.navigate("LoginPage")} />
+                { statusContext.currentUser != null &&
+                    <Button title="Open Map" onPress={() => navigation.navigate("Map")} />
+                }
+            </View>
         </View>
     );
 }
@@ -22,4 +24,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    text:{
+        fontSize: 20,
+        color: 'black',
+        marginBottom: 50,
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        width: '95%',
+        justifyContent: 'space-evenly',
+        marginBottom: 10,
+      },
 })
